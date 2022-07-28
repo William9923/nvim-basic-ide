@@ -33,4 +33,4 @@ require("user.dap")
 require("user.todo")
 require("user.leap")
 require("user.aerial")
--- theming (tokyo night), lualine, lsp, barbar
+-- ), lualine, lsp

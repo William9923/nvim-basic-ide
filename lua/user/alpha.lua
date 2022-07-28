@@ -41,7 +41,7 @@ dashboard.section.buttons.val = {
 local function footer()
   return {
     [[~~ created with love ❦ ~~]],
-    [[by williamong1400@gmail.com]],
+    [[    by: William Ong      ]],
   }
 end
 
