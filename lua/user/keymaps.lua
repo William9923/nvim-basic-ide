@@ -22,12 +22,6 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
--- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
-
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
@@ -41,14 +35,52 @@ keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
 -- Better paste
 keymap("v", "p", '"_dP', opts)
 
+-- Fast saving with Ctrl + s
+keymap('n', '<C-s>', ':w<CR>', opts)
+
+-- Select All with Ctrl + a
+keymap('n', '<C-a>', 'gg<S-v>G', opts)
+keymap('v', '<C-a>', 'gg<S-v>G', opts)
+
+-- Easier Replace
+keymap('n', 'r', 'R', opts)
+
+-- Increment/decrement digits
+keymap('n', '+', '<C-a>', opts)
+keymap('n', '-', '<C-x>', opts)
+
+-- Delete without yanking
+keymap('n', '<leader>d', '"_d', opts)
+keymap('n', 'x', '"_x', opts)
+
+-- Open current directories + File
+keymap('n', 'te', ':tabedit<CR>', opts) -- new tab
+keymap('n', '<S-Tab>', ':tabprev<Return>', opts) -- prev tab
+keymap('n', '<Tab>', ':tabnext<Return>', opts) -- next tab
+
+-- Splitting windows
+keymap('n', '<leader>ss', ':split<Return><C-w>w', opts) -- split windows (horizontal)
+keymap('n', '<leader>sv', ':vsplit<Return><C-w>w', opts) -- split windows (vertical)
+keymap('n', '<leader>sq', '<C-w>q', opts) -- close split windows
+
+-- Stay in normal/visual mode when entering
+keymap('n', '<CR>', 'i<CR><esc>', opts)
+keymap('v', '<CR>', 'i<CR><esc>', opts)
+
 -- Insert --
--- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
+-- Press kk fast to enter
+keymap("i", "kk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+
+-- Move text up and down
+keymap('v', '<A-j>', ':m .+1<CR>==gv', opts)
+keymap('v', '<A-k>', ':m .-2<CR>==gv', opts)
+keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
+keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Plugins --
 
@@ -56,10 +88,12 @@ keymap("v", ">", ">gv", opts)
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
-keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
-keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", ";ff", ":Telescope find_files<CR>", opts)
+keymap("n", ";fr", ":Telescope live_grep<CR>", opts)
+keymap("n", ";fp", ":Telescope projects<CR>", opts)
+keymap("n", ";fb", ":Telescope buffers<CR>", opts)
+keymap("n", ";fd", ":Telescope diagnostics<CR>", opts)
+keymap("n", ";ft", ":TodoTelescope<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)

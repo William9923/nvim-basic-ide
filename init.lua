@@ -1,6 +1,16 @@
+--[[
+Neovim init file
+Author: William
+Inspiration:
+- https://github.com/LunarVim/nvim-basic-ide
+- https://github.com/brainfucksec/neovim-lua
+- https://github.com/craftzdog/dotfiles-public
+- https://github.com/LunarVim/Neovim-from-scratch
+--]]
+
 require "user.options"
 require "user.keymaps"
-require "user.plugins"
+require "user.plugins" -- Import Lua Plugins
 require "user.autocommands"
 require "user.colorscheme"
 require "user.cmp"
@@ -20,3 +30,4 @@ require "user.indentline"
 require "user.alpha"
 require "user.lsp"
 require "user.dap"
+-- todo, leap, aerial
