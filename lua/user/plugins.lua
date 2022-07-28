@@ -107,7 +107,8 @@ return packer.startup(function(use)
   }
   use { "folke/todo-comments.nvim", commit = "98b1ebf198836bdc226c0562b9f906584e6c400e"}
   use { "stevearc/aerial.nvim", commit = "86b8341bb8c58ece7e7f3f9b2d0310f4a328ab21" }
-  -- Automatically set up your configuration after cloning packer.nvim
+  use { "romgrk/barbar.nvim", commit = "4a19df133df71b51e82302db06b31570d7dedd58"}
+    -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
