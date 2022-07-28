@@ -82,18 +82,34 @@ keymap('v', '<A-k>', ':m .-2<CR>==gv', opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
+-- LSP --
+keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+keymap("n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+keymap("n", "gr", "<cmd>Trouble lsp_references<CR>", opts)
+keymap("n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+keymap("n", "<leader>ff", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
+keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+
+-- Special command (Formatting)
+vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+
 -- Plugins --
 
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
-keymap("n", ";ff", ":Telescope find_files<CR>", opts)
-keymap("n", ";fr", ":Telescope live_grep<CR>", opts)
-keymap("n", ";fp", ":Telescope projects<CR>", opts)
-keymap("n", ";fb", ":Telescope buffers<CR>", opts)
-keymap("n", ";fd", ":Telescope diagnostics<CR>", opts)
-keymap("n", ";ft", ":TodoTelescope<CR>", opts)
+keymap("n", ";f", ":Telescope find_files<CR>", opts)
+keymap("n", ";r", ":Telescope live_grep<CR>", opts)
+keymap("n", ";p", ":Telescope projects<CR>", opts)
+keymap("n", ";b", ":Telescope buffers<CR>", opts)
+keymap("n", ";d", ":Telescope diagnostics<CR>", opts)
+keymap("n", ";t", ":TodoTelescope<CR>", opts)
+keymap("n", ";h", ":Telescope help_tags<CR>", opts)
+keymap("n", ";k", ":Telescope keymaps<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
@@ -112,3 +128,13 @@ keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+
+-- Aerial
+-- Toggle the aerial window with <leader>a
+keymap('n', '<leader>a', '<cmd>AerialToggle!<CR>', opts)
+-- Jump forwards/backwards with '{' and '}'
+keymap('n', '{', '<cmd>AerialPrev<CR>', opts)
+keymap('n', '}', '<cmd>AerialNext<CR>', opts)
+-- Jump up the tree with '[[' or ']]'
+keymap('n', '[[', '<cmd>AerialPrevUp<CR>', opts)
+keymap('n', ']]', '<cmd>AerialNextUp<CR>', opts)

@@ -80,12 +80,17 @@ M.on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = false
   end
 
-  lsp_keymaps(bufnr)
+  -- lsp_keymaps(bufnr)
   local status_ok, illuminate = pcall(require, "illuminate")
   if not status_ok then
     return
   end
   illuminate.on_attach(client)
+  local status_ok, aerial = pcall(require, "aerial")
+  if not status_ok then
+    return
+  end
+  aerial.on_attach(client)
 end
 
 return M

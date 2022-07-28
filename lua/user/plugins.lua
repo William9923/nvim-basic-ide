@@ -98,10 +98,15 @@ return packer.startup(function(use)
 
   -- Additional plugins
   use { "ggandor/leap.nvim", commit = "4e6e6afe81052483bf0900dc2bb8882194b7be50" }
-  use { "folke/trouble.nvim", commit = "da61737d860ddc12f78e638152834487eabf0ee5" }
+  use {
+    "folke/trouble.nvim", 
+    commit = "da61737d860ddc12f78e638152834487eabf0ee5",
+    config = function ()
+      require("trouble").setup {}
+    end
+  }
   use { "folke/todo-comments.nvim", commit = "98b1ebf198836bdc226c0562b9f906584e6c400e"}
   use { "stevearc/aerial.nvim", commit = "86b8341bb8c58ece7e7f3f9b2d0310f4a328ab21" }
-
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
