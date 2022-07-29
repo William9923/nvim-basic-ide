@@ -108,7 +108,11 @@ return packer.startup(function(use)
   use { "folke/todo-comments.nvim", commit = "98b1ebf198836bdc226c0562b9f906584e6c400e"}
   use { "stevearc/aerial.nvim", commit = "86b8341bb8c58ece7e7f3f9b2d0310f4a328ab21" }
   use { "romgrk/barbar.nvim", commit = "4a19df133df71b51e82302db06b31570d7dedd58"}
-    -- Automatically set up your configuration after cloning packer.nvim
+
+  -- Additional Debugger Plugins (language specifics)
+  use { 'leoluz/nvim-dap-go', commit = "fca8bf90bf017e8ecb3a3fb8c3a3c05b60d1406d"}
+
+  -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
