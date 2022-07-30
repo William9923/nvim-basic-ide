@@ -22,10 +22,6 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
--- Navigate buffers
--- keymap("n", "<S-l>", ":bnext<CR>", opts)
--- keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
 -- Clear highlights
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
@@ -124,11 +120,36 @@ keymap("n", "<leader>c", "<cmd>lua require'dap'.continue()<cr>", opts)
 keymap("n", "<leader>i", "<cmd>lua require'dap'.step_into()<cr>", opts)
 keymap("n", "<leader>o", "<cmd>lua require'dap'.step_over()<cr>", opts)
 keymap("n", "<leader>O", "<cmd>lua require'dap'.step_out()<cr>", opts)
+
+keymap("n", "<leader>dn", function()
+	require("dap").run_to_cursor()
+end, opts)
+keymap("n", "<leader>dc", function()
+	require("dap").terminate()
+end, opts)
+keymap("n", "<leader>dR", function()
+	require("dap").clear_breakpoints()
+end, opts)
+keymap("n", "<leader>de", function()
+	require("dap").set_exception_breakpoints({ "all" })
+end, opts)
+keymap("n", "<leader>di", function()
+	require("dap.ui.widgets").hover()
+end, opts)
+keymap("n", "<leader>?", function()
+	local widgets = require("dap.ui.widgets")
+	widgets.centered_float(widgets.scopes)
+end, opts)
+keymap("n", "<leader>dk", ':lua require"dap".up()<CR>zz', opts)
+keymap("n", "<leader>dj", ':lua require"dap".down()<CR>zz', opts)
+
 keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
-keymap("v", "<leader>e", "<cmd>lua require'dapui'.eval()<cr>", opts)
+
+keymap("n", "<leader>;s", "<cmd>Telescope dap frames<cr>", opts)
+keymap("n", "<leader>;b", "<cmd>Telescope dap listbreakpoints<cr>", opts)
 
 -- Aerial
 -- Toggle the aerial window with <leader>a
